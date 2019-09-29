@@ -7,7 +7,8 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float speed;
 
     private Collider playerCollider;
-    private Rigidbody2D rb2d; 
+    private Rigidbody2D rb2d;
+    public GameObject Lazor;
     
     void Start()
     {
@@ -45,6 +46,13 @@ public class NewBehaviourScript : MonoBehaviour
             //put back on screen
         }
         
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject b = (GameObject)(Instantiate(Lazor, 
+            transform.position, Quaternion.identity));
+
+            b.GetComponent<Rigidbody2D>().AddForce(transform.right * 1000);
+        }
     }
 
 
