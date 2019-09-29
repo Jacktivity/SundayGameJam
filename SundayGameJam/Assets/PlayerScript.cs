@@ -2,25 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private float speed;
 
     private Collider playerCollider;
     private Rigidbody2D rb2d;
     public GameObject Lazor;
+    public int healthpoints;
+
     
     void Start()
     {
         playerCollider = GetComponent<Collider>();
         rb2d = GetComponent<Rigidbody2D> ();
     }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        
-    }
-
 
     private bool IsCharacterOffScreen()
     {
@@ -53,6 +49,11 @@ public class NewBehaviourScript : MonoBehaviour
 
             b.GetComponent<Rigidbody2D>().AddForce(transform.right * 1000);
         }
+    }
+
+    void ApplyDamage(int n)
+    {
+        healthpoints -= n;
     }
 
 
