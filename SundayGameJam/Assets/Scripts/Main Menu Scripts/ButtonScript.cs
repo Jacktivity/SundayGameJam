@@ -26,7 +26,7 @@ public class ButtonScript : MonoBehaviour
 
     }
 
-    void StartGame() {
+    public void StartGame() {
         Debug.Log("Started");
     }
 }
