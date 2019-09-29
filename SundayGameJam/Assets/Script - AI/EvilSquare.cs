@@ -44,4 +44,10 @@ public class EvilSquare : MonoBehaviour
     {
         health =- n;
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        col.gameObject.SendMessage("ApplyDamage", 11);
+        Destroy(gameObject);
+    }
 }

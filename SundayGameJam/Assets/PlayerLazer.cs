@@ -18,7 +18,7 @@ public class PlayerLazer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Enemy" || col.gameObject.tag == "Meteor")
+        if(col.gameObject.tag == "Enemy" | col.gameObject.tag == "Meteor")
         {
             col.gameObject.SendMessage("ApplyDamage", 10);
             Destroy(gameObject);

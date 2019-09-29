@@ -45,9 +45,14 @@ public class PlayerScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             GameObject b = (GameObject)(Instantiate(Lazor, 
-            transform.position, Quaternion.identity));
+            transform.position + transform.right, Quaternion.identity));
 
             b.GetComponent<Rigidbody2D>().AddForce(transform.right * 1000);
+        }
+
+        if(healthpoints < 0)
+        {
+            Destroy(gameObject);
         }
     }
 

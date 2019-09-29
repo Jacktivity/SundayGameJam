@@ -26,7 +26,7 @@ public class Meteor : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Enemy")
+        if(col.gameObject.tag == "Enemy" | col.gameObject.tag =="Player")
         {
             col.gameObject.SendMessage("ApplyDamage", 10);
         }
