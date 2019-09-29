@@ -17,7 +17,7 @@ public class Meteor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb2d.AddForce(transform.up * speed, ForceMode2D.Impulse);
+        rb2d.AddForce(transform.right * speed, ForceMode2D.Impulse);
 
         if(health < 0)
         {
@@ -26,7 +26,10 @@ public class Meteor : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        col.gameObject.SendMessage("ApplyDamage", 10);
+        if(col.gameObject.tag == "Enemy")
+        {
+            col.gameObject.SendMessage("ApplyDamage", 10);
+        }
     }
     void ApplyDamage(int n)
     {

@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour
             var spawn = topSpawnArea.bounds;
             var randomPosition = spawn.center + new Vector3((Random.value-0.5f) * spawn.extents.x * 2, (Random.value - 0.5f) * spawn.extents.y * 2);
 
-            var go = Instantiate(asteroid, randomPosition, new Quaternion());
+            var go = Instantiate(asteroid, randomPosition, enemy.transform.rotation);
         }
     }
 
@@ -42,7 +42,7 @@ public class EnemyManager : MonoBehaviour
                 var spawn = sideSpawnArea.bounds;
                 var randomPosition = spawn.center + new Vector3((Random.value - 0.5f) * spawn.extents.x * 2, (Random.value - 0.5f) * spawn.extents.y * 2);
 
-                var go = Instantiate(enemy, randomPosition, new Quaternion());
+                var go = Instantiate(enemy, randomPosition, asteroid.transform.rotation);
             }            
         }
     }

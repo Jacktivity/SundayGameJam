@@ -21,14 +21,14 @@ public class EvilSquare : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb2d.AddForce(transform.right * speed, ForceMode2D.Impulse);
+        rb2d.AddForce(transform.up * speed, ForceMode2D.Impulse);
 
         shootTime += Time.deltaTime;
         if (shootTime >= bulletSpawn)
         {
             shootTime = 0;
-            var spawn = transform.position - (transform.right * 1.5f);
-            var go = Instantiate(bullet, spawn, new Quaternion());
+            var spawn = transform.position - (transform.up * 1.5f);
+           //var go = Instantiate(bullet, spawn, new Quaternion());
         }
 
 
