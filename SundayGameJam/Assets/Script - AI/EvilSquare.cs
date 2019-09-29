@@ -5,8 +5,12 @@ using UnityEngine;
 public class EvilSquare : MonoBehaviour
 {
     public float speed;
-    public float health;
+    public int health;
     private Rigidbody2D rb2d;
+    private float shootTime;
+    public GameObject bullet;
+    public float bulletSpawn;
+    public float maxSpeed = 0.4f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +23,25 @@ public class EvilSquare : MonoBehaviour
     {
         rb2d.AddForce(transform.right * speed, ForceMode2D.Impulse);
 
-        if(health < 0)
+        shootTime += Time.deltaTime;
+        if (shootTime >= bulletSpawn)
+        {
+            shootTime = 0;
+            var spawn = transform.position - (transform.right * 1.5f);
+            var go = Instantiate(bullet, spawn, new Quaternion());
+        }
+
+
+        rb2d.velocity = Vector3.ClampMagnitude(rb2d.velocity, maxSpeed);
+
+        if (health < 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    void ApplyDamage(int n)
+    {
+        health =- n;
     }
 }
